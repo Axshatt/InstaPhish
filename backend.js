@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './index.html'))
 })
 
-app.post("/", async (req, res) => {
+app.post("/send", async (req, res) => {
 
     const email = req.body.email;
     const password = req.body.password;

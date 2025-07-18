@@ -12,9 +12,7 @@ app.get('/', (req, res) => {
 
 app.post("/send", async (req, res) => {
 
-    const email = req.body.email;
-    const password = req.body.password;
-
+    const {email, password} = req.body;
     try {
 
         await CredModal.create({
